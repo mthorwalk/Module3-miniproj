@@ -8,12 +8,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
 
     private Rigidbody rb;
+    private int count;
     private float movementX;
     private float movementY;
 
     // Start is called before the first frame update
     void Start()
     {
+        count = 0;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -29,5 +31,14 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            other.gameObject.SetActive(false);
+            count++;
+        }
     }
 }
