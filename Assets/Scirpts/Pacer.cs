@@ -10,18 +10,18 @@ public class Pacer : MonoBehaviour
 
     void Update()
     {
-        float zNew = transform.position.z +
-        direction* speed *Time.deltaTime;
+        float zNew = transform.position.z + direction * speed * Time.deltaTime;
+
         if (zNew >= zMax)
         {
             zNew = zMax;
             direction *= -1;
-            }
+        }
         else if (zNew <= zMin)
         {
             zNew = zMin;
             direction *= -1;
-            }
-        transform.position = new Vector3(7.5f, 0.75f, zNew);
         }
+        transform.position = new Vector3(7.5f, 0.75f, zNew);
+    }
 }
