@@ -12,8 +12,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI timer;
     public GameObject winTextObject;
     public GameObject loseTextObject;
+    public TextMeshProUGUI leaderboardTextObject;
     public Button resetButton;
-    public float[] winTimes = new float[5];
+    public static float[] winTimes = new float[5];
 
     private Rigidbody rb;
     private int count;
@@ -48,12 +49,17 @@ public class PlayerController : MonoBehaviour
             timeStop = true;
             winTextObject.SetActive(true);
             resetButton.gameObject.SetActive(true);
+            
             for (int i = 0; i < 5; i++) {
                 if (time > winTimes[i]) {
-                    winTimes[i] = time;
+                    for (int j = 4; j > i; j--) {
+                        winTimes[j] = winTimes[j-1];
+                    }
+                    winTimes[i] = 15 - time;
                     break;
                 }
             }
+            displayLeaderboard();
         }
     }
 
@@ -67,6 +73,7 @@ public class PlayerController : MonoBehaviour
             timeStop = true;
             resetButton.gameObject.SetActive(true);
             loseTextObject.SetActive(true);
+            displayLeaderboard();
         }
     }
 
@@ -97,5 +104,16 @@ public class PlayerController : MonoBehaviour
             timer.text = time.ToString("0.00");
         }
         
+    }
+    private void displayLeaderboard() 
+    {
+        string firstScore = winTimes[0].ToString("0.00");
+        string secondScore = winTimes[1].ToString("0.00");
+        string thirdScore = winTimes[2].ToString("0.00");
+        string fourthScore = winTimes[3].ToString("0.00");
+        string fifthScore = winTimes[4].ToString("0.00");
+
+        leaderboardTextObject.text = "1. " + firstScore + "\n" + "2. " + secondScore + "\n" + "3. " + thirdScore + "\n" + 
+                                     "4. " + fourthScore + "\n" + "5. " + fifthScore + "\n";
     }
 }
