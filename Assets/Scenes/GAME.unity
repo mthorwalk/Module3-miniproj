@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.49641353, b: 0.5748163, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641275, b: 0.5748151, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -976,6 +976,13 @@ MonoBehaviour:
   timer: {fileID: 686337252}
   winTextObject: {fileID: 1599761034}
   loseTextObject: {fileID: 580321547}
+  resetButton: {fileID: 896353622}
+  winTimes:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!114 &641953462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,6 +1370,7 @@ GameObject:
   - component: {fileID: 896353624}
   - component: {fileID: 896353623}
   - component: {fileID: 896353622}
+  - component: {fileID: 896353625}
   m_Layer: 5
   m_Name: ResetButton
   m_TagString: Untagged
@@ -1434,7 +1442,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 896353623}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1630308808}
+        m_TargetAssemblyTypeName: ResetGame, Assembly-CSharp
+        m_MethodName: onButtonClick
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: GAME
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &896353623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1473,6 +1493,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896353620}
   m_CullTransparentMesh: 1
+--- !u!114 &896353625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896353620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2be99d2fb0f7c47953b4b39b75828b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &974761863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2434,6 +2466,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599761034}
   m_CullTransparentMesh: 1
+--- !u!1 &1630308807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1630308809}
+  - component: {fileID: 1630308808}
+  m_Layer: 0
+  m_Name: buttonClickGo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1630308808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630308807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd2be99d2fb0f7c47953b4b39b75828b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1630308809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630308807}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630809949
 GameObject:
   m_ObjectHideFlags: 0

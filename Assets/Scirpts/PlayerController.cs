@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI timer;
     public GameObject winTextObject;
     public GameObject loseTextObject;
+    public Button resetButton;
+    public float[] winTimes = new float[5];
 
     private Rigidbody rb;
     private int count;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
         setCountText();
         winTextObject.SetActive(false);
         loseTextObject.SetActive(false);
+        resetButton.gameObject.SetActive(false);
     }
 
     void OnMove(InputValue movementValue)
@@ -43,6 +47,13 @@ public class PlayerController : MonoBehaviour
         {
             timeStop = true;
             winTextObject.SetActive(true);
+            resetButton.gameObject.SetActive(true);
+            for (int i = 0; i < 5; i++) {
+                if (time > winTimes[i]) {
+                    winTimes[i] = time;
+                    break;
+                }
+            }
         }
     }
 
@@ -54,6 +65,7 @@ public class PlayerController : MonoBehaviour
         {
             time = 0;
             timeStop = true;
+            resetButton.gameObject.SetActive(true);
             loseTextObject.SetActive(true);
         }
     }
