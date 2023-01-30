@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
                     for (int j = 4; j > i; j--) {
                         winTimes[j] = winTimes[j-1];
                     }
-                    winTimes[i] = 15 - time;
+                    winTimes[i] = time;
                     break;
                 }
             }
