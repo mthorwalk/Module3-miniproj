@@ -10,21 +10,29 @@ public class GunController : MonoBehaviour
     public SteamVR_Action_Boolean shootAction = SteamVR_Input.GetAction<SteamVR_Action_Boolean>("default", "Shoot");
 
     private bool shoot;
-    private SteamVR_Input_Sources rightHand;
+    private SteamVR_Input_Sources hand;
+    private Interactable interactable;
 
     // Start is called before the first frame update
     void Start()
     {
-        rightHand = SteamVR_Input_Sources.RightHand;
+        interactable = GetComponent<Interactable>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (shootAction[rightHand].stateDown)
+
+        if (interactable.attachedToHand)
         {
-            Debug.Log("this is a test ahhhhhhhhhhhhhhhhhhhh");
+            interactable.handFollowTransform = true;
+
+            hand = interactable.attachedToHand.handType;
+            Debug.Log("Gun Update + " + shootAction[hand].state);
+            if (shootAction[hand].state)
+            {
+                Debug.Log("this is a test ahhhhhhhhhhhhhhhhhhhh");
+            }
         }
     }
-
 }
